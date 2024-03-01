@@ -1,0 +1,44 @@
+services:
+  app:
+    image: mohamedsambo/flask-app:2.0.0
+    container_name: app
+    ports:
+      - "5000:5000"
+    environment:
+      MONGO_URI: "mongodb://mongodb:27017/users"
+    depends_on:
+      - mongodb
+  
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=users
+  
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    restart: unless-stopped
+    ports:
+      - "5001:9090"
+    volumes:
+      - "./monitor/prometheus.yml:/etc/prometheus/prometheus.yml"
+    depends_on:
+      - app
+  
+  grafana:
+    image: grafana/grafana:latest
+    restart: unless-stopped
+    user: "472"
+    container_name: grafana
+    ports:
+      - "5002:3000"
+    volumes:
+      - ./monitor/datasource.yml:/etc/grafana/provisioning/datasource.yml
+    env_file:
+      - ./monitor/config.monitoring
+    depends_on:
+      - prometheus
+
