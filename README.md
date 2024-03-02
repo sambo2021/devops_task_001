@@ -27,3 +27,9 @@ https://stackoverflow.com/questions/26423984/unable-to-connect-to-flask-app-on-d
 note: 
 1- mohamedsambo/flask-app:1.0.0 without prome / grafana
 2- mohamedsambo/flask-app:2.0.0 using flask_prome CLIENT and docker compose uses prometheus and grafana
+3- mohamedsambo/flask-app:3.0.0 using prometheus_flask_exporter
+
+5- To see the histogram of request latencies by status and path in Prometheus, you need to set up the query 
+   sum(rate(requests_by_status_and_path_bucket{le="0.1", status=~"2..|3..|4..|5..", path="/"}[1m])) by (status) 
+
+6- Log in to Grafana: Open your Grafana instance in a web browser and log in then in new dashbord add prometheus as data source then u can visualize query and add it to new dashbord

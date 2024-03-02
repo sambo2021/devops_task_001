@@ -1,6 +1,6 @@
 services:
   app:
-    image: mohamedsambo/flask-app:2.0.0
+    image: mohamedsambo/flask-app:3.0.0
     container_name: app
     ports:
       - "5000:5000"
@@ -31,7 +31,6 @@ services:
   grafana:
     image: grafana/grafana:latest
     restart: unless-stopped
-    user: "472"
     container_name: grafana
     ports:
       - "5002:3000"
