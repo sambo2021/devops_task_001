@@ -33,3 +33,6 @@ note:
    sum(rate(requests_by_status_and_path_bucket{le="0.1", status=~"2..|3..|4..|5..", path="/"}[1m])) by (status) 
 
 6- Log in to Grafana: Open your Grafana instance in a web browser and log in then in new dashbord add prometheus as data source then u can visualize query and add it to new dashbord
+
+
+7- very interesint if ur setting ur apps behind ingress router https://stackoverflow.com/questions/67187642/how-to-use-virtualservice-to-expose-dashboards-like-grafana-prometheus-and-kiali
