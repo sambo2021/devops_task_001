@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: CD-TEST
+  name: cd-test
   namespace: dev
 spec:
   containers:
