@@ -4,7 +4,6 @@ metadata:
   name: CD-TEST
   namespace: dev
 spec:
-  serviceAccountName: jenkins-admin
   containers:
   - name: echoserver
     image: gcr.io/google_containers/echoserver:1.0
