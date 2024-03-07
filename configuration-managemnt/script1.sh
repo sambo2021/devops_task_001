@@ -1,6 +1,6 @@
 #!/bin/bash
 
-privateInstances=("branch-01" "branch-02")
+privateInstances=("branch01" "branch02")
 
 for item in "${privateInstances[@]}"; do
     aws ec2 describe-instances --region "us-east-1" \
@@ -13,4 +13,4 @@ aws ec2 describe-instances --region "us-east-1" --query "Reservations[*].Instanc
 
 
 
-ssh -o ProxyCommand="ssh -W %h:%p -q -oStrictHostKeyChecking=no -i $PWD/config.pem ec2-user@54.82.125.106" -oStrictHostKeyChecking=no -i $PWD/config.pem ec2-user@10.0.141.172
+#ssh -o ProxyCommand="ssh -W %h:%p -q -oStrictHostKeyChecking=no -i $PWD/config.pem ec2-user@54.82.125.106" -oStrictHostKeyChecking=no -i $PWD/config.pem ec2-user@10.0.141.172
